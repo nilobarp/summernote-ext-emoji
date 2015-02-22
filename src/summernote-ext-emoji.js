@@ -77,19 +77,19 @@
             for (var i = 0; i < chunks[j].length; i++) {
                 var emo = chunks[j][i];
                 emoList += '<div class="col-xs-3">' +
-                    '<a href="javascript:void(0)" data-event="selectEmoji" data-value=":' + emo + ':"><span style="background: url(\'pngs/' + emo + '.png\'); display: inline-block; width: 24px; height: 24px; background-size: 24px;"></span></a>' +
-                    '</div>';
+                '<a href="javascript:void(0)" data-event="selectEmoji" data-value=":' + emo + ':"><span style="background: url(\'' + emo + '.png\'); display: inline-block; width: 24px; height: 24px; background-size: 24px;"></span></a>' +
+                '</div>';
             }
             emoList += '</div>';
         }
 
         return emoList;
-    }
+    };
 
     var filterEmoji = function (value) {
         var filtered = emojis.filter(function (el) {
             return el.indexOf(value) > -1;
-        })
+        });
         return render(filtered);
     };
 
@@ -108,7 +108,7 @@
         },
 
         events: {
-            selectEmoji: function (layoutInfo, value) {
+            selectEmoji: function (event, editor, layoutInfo, value) {
                 var $editable = layoutInfo.editable();
                 editor.insertText($editable, value);
             }
