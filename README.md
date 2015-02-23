@@ -5,7 +5,6 @@
 ##Usage
 
  - Include `summernote-ext-emoji.js`
- - Place `pngs` along side the `js` file
  - Add `emoji` to summernote toolbar
 
 ##Example
@@ -15,6 +14,9 @@
 ```
 
 ```javascript
+
+document.emojiSource = '../pngs/'; //relative path to emojis
+
 $('#summernote').summernote({
   toolbar: [
 		['misc', ['emoji']],
