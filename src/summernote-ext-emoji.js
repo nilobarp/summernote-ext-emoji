@@ -77,7 +77,7 @@
             for (var i = 0; i < chunks[j].length; i++) {
                 var emo = chunks[j][i];
                 emoList += '<div class="col-xs-3">' +
-                '<a href="javascript:void(0)" data-event="selectEmoji" data-value=":' + emo + ':"><span style="background: url(\'' + emo + '.png\'); display: inline-block; width: 24px; height: 24px; background-size: 24px;"></span></a>' +
+                '<a href="javascript:void(0)" data-event="selectEmoji" data-value=":' + emo + ':"><span style="background: url(\'' + document.emojiSource + emo + '.png\'); display: inline-block; width: 24px; height: 24px; background-size: 24px;"></span></a>' +
                 '</div>';
             }
             emoList += '</div>';
@@ -97,7 +97,8 @@
         name: 'emoji',
         buttons: {
             emoji: function (options) {
-                console.log(options);
+                if(document.emojiSource === undefined)
+					document.emojiSource = '';
                 addListener();
                 return tmpl.iconButton('fa fa-smile-o', {
                     title: 'Emoji',
