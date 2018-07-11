@@ -46,7 +46,7 @@
                     $('#emoji-filter').focus();
                 });
                 $('body').on('keyup', '#emoji-filter', function (e) {
-                    var filteredList = filterEmoji($('#emoji-filter').val());
+                    var filteredList = filterEmoji($(e.currentTarget).val());
                     $("#emoji-dropdown .emoji-list").html(filteredList);
                 });
                 $(document).on('click', '.closeEmoji', function(){
@@ -54,7 +54,7 @@
                 });
                 $(document).on('click', '.selectEmoji', function(){
                     var img = new Image();
-                    img.src = '/assets/images/summernote/pngs/'+$(this).attr('data-value')+'.png';
+                    img.src = document.emojiSource + $(this).attr('data-value')+'.png';
                     img.alt = $(this).attr('data-value');
                     img.className = 'emoji-icon-inline';
                     context.invoke('editor.insertNode', img);
@@ -67,7 +67,7 @@
                 /*limit list to 24 images*/
                 var emojis = emojis;
                 var chunks = chunk(emojis, 4);
-                for (j = 0; j < chunks.length; j++) {
+                for (var j = 0; j < chunks.length; j++) {
                     emoList += '<div class="row m-0-l m-0-r">';
                     for (var i = 0; i < chunks[j].length; i++) {
                         var emo = chunks[j][i];
